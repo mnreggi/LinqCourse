@@ -5,7 +5,6 @@ namespace Queries
     public class Movie
     {
         public string Title { get; set; }
-        public float Rating { get; set; }
         
         // Changing this so we can see when this property is inspected.
         private int _year;

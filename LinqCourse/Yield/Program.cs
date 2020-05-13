@@ -11,14 +11,26 @@ namespace LinqCourse.Yield
         {
             var movies = new List<Movie>
             {
-                new Movie { Title="The Dark Knight", Rating=8.9f, Year = 2008 },
-                new Movie { Title="Star Wars V", Rating = 8.7f, Year = 1980 },
-                new Movie { Title ="Frozen", Rating=8.5f, Year = 1942 },
-                new Movie { Title = "Shrek", Rating = 8.0f, Year = 2010 }
+                new Movie { Title="The Dark Knight", Year = 2008 },
+                new Movie { Title="The Shinning", Year = 1980 },
+                new Movie { Title ="The Spoilers", Year = 1942 },
+                new Movie { Title = "Inception", Year = 2010 }
             };
+
+            #region Extension Methods
+
+            var testString = "2";
+            Console.WriteLine(testString.ParseToInt());
+            Console.WriteLine(testString.ParseToInt().GetType());
+
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine(movies.MyCount());
+
+            #endregion
 
             #region My Filter Without Yield
             
+            Console.WriteLine("-------------------------------------");
             // Here we are gonna execute our personalized extension method
             Console.WriteLine("\n<<<<<<< MyFilterWithoutYield starting >>>>>>>>");
             var query = movies.MyFilterWithoutYield(m => m.Year > 2000);
@@ -102,6 +114,22 @@ namespace LinqCourse.Yield
             while (enumerator.MoveNext())
             {
                 Console.WriteLine(enumerator.Current?.Title);
+            }
+            Console.WriteLine("<<<<<<< While method enumerator finished >>>>>>>>");
+            #endregion
+            
+            #region Deferred Execution with TAKE
+            
+            Console.WriteLine("-------------------------------------\n");
+            
+            Console.WriteLine("<<<<<<< MyFilter Enumerator with TAKE starting >>>>>>>>");
+            var queryEnumeratorTake = movies.MyFilter(m => m.Year > 2000).Take(1);
+
+            Console.WriteLine("\n<<<<<<< While method enumerator starting >>>>>>>>");
+            var enumeratorTake = queryEnumeratorTake.GetEnumerator();
+            while (enumeratorTake.MoveNext())
+            {
+                Console.WriteLine(enumeratorTake.Current?.Title);
             }
             Console.WriteLine("<<<<<<< While method enumerator finished >>>>>>>>");
             #endregion
