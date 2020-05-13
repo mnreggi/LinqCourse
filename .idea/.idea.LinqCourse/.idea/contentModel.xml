@@ -15,7 +15,11 @@
             </e>
           </e>
         </e>
-        <e p="Program.cs" t="Include" />
+        <e p="Yield" t="Include">
+          <e p="Movie.cs" t="Include" />
+          <e p="MyLinq.cs" t="Include" />
+          <e p="Program.cs" t="Include" />
+        </e>
       </e>
       <e p="LinqCourse.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />
