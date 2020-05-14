@@ -91,8 +91,7 @@ namespace LinqCourse.Yield
             // 5- Step 3 and 4 will repeat until there's no more elements.
             
             #endregion
-
-
+            
             #region Deferred Execution
             // DEFERRED EXECUTION
             // Make LINQ as lazy as possible,

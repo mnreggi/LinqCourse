@@ -5,7 +5,8 @@ namespace LinqCourse.Yield
 {
     public static class MyLinq
     {
-        // Extension methods Allow us to define static methods that appears to be a member of another type (anytype)
+        // Extension methods Allow us to define static methods
+        // that appears to be a member of another type (anytype)
         #region Example of my custom extension method
 
         // This keyword will tell us to which kind of type we can use this extension method.
