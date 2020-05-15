@@ -19,5 +19,15 @@ namespace Queries
             set { _year = value; }
         }
         
+        private int _giveMeException;
+        public int GiveMeException
+        {
+            get
+            {
+                throw new Exception("This is an exception");
+            }
+            set { _giveMeException = value; }
+        }
+        
     }
 }

@@ -142,7 +142,7 @@ namespace LinqCourse.Yield
             Console.WriteLine("<<<<<<< While method enumerator finished >>>>>>>>");
             #endregion
             
-            #region Merging Deferred and NOT Deferred
+            #region Deferred vs NOT Deferred
             
             Console.WriteLine("-------------------------------------\n");
             
@@ -168,6 +168,62 @@ namespace LinqCourse.Yield
             }
             Console.WriteLine("<<<<<<< Foreach method finished >>>>>>>>");
 
+            #endregion
+            
+            #region Deferred Execution with Exceptions
+            
+            Console.WriteLine("-------------------------------------\n");
+
+            var queryException = Enumerable.Empty<Movie>();
+
+            try
+            {
+                Console.WriteLine("<<<<<<< Operations with ToList() inside Try Catch starting >>>>>>>>");
+                queryException = movies.MyFilter(m => m.GiveMeException > 2000).ToList();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"This exception happened when calling ToList() - {e.Message}\n");
+            }
+            
+            Console.WriteLine($"Count of movies: {queryException.Count()}");
+            
+            
+            Console.WriteLine("\n<<<<<<< Foreach method starting >>>>>>>>");
+            foreach (var movie in queryException)
+            {
+                Console.WriteLine(movie.Title);
+            }
+            Console.WriteLine("<<<<<<< Foreach method finished >>>>>>>>");
+            
+            
+            try
+            {
+                Console.WriteLine("<<<<<<< Operations without ToList() inside Try Catch starting >>>>>>>>");
+                queryException = movies.MyFilter(m => m.GiveMeException > 2000);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Do I have this exception? - {e.Message}\n");
+            }
+            
+            Console.WriteLine($"Count of movies: {queryException.Count()}");
+            
+            // Please comment above try catch to solve the problem.
+            // Uncomment the following to finally solve the issue.
+            // The actual piece of work that is executing the query is when we call the Count()-
+            // Here we need the TryCatch block
+            queryException = movies.MyFilter(m => m.GiveMeException > 2000);
+            try
+            {
+                Console.WriteLine("<<<<<<< Operations without ToList() inside Try Catch starting >>>>>>>>");
+                Console.WriteLine($"Count of movies: {queryException.Count()}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Now I can see when is executing - {e.Message}\n");
+            }
+            
             #endregion
         }
     }
