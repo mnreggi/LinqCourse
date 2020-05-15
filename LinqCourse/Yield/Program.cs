@@ -33,7 +33,14 @@ namespace LinqCourse.Yield
             Console.WriteLine("-------------------------------------");
             // Here we are gonna execute our personalized extension method
             Console.WriteLine("\n<<<<<<< MyFilterWithoutYield starting >>>>>>>>");
+            
             var query = movies.MyFilterWithoutYield(m => m.Year > 2000);
+            
+//            // Comment the above and Uncomment this query, to see what happens when we don't have a yield return/deferred execution.
+//            // You will see that we are inspecting the whole list, and then taking the first element.
+//            // Difference between the execution with yield return?
+//            var query = movies.MyFilterWithoutYield(m => m.Year > 2000).Take(1);
+
 
             Console.WriteLine("\n<<<<<<< Foreach method starting >>>>>>>>");
             foreach (var movie in query)
@@ -129,6 +136,8 @@ namespace LinqCourse.Yield
             while (enumeratorTake.MoveNext())
             {
                 Console.WriteLine(enumeratorTake.Current?.Title);
+                // Instead of going through all of the elements in the list.
+                // We just TAKE the first one that matches the conditionand that's it.
             }
             Console.WriteLine("<<<<<<< While method enumerator finished >>>>>>>>");
             #endregion
