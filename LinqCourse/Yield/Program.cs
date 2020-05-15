@@ -142,6 +142,33 @@ namespace LinqCourse.Yield
             Console.WriteLine("<<<<<<< While method enumerator finished >>>>>>>>");
             #endregion
             
+            #region Merging Deferred and NOT Deferred
+            
+            Console.WriteLine("-------------------------------------\n");
+            
+            Console.WriteLine("<<<<<<< Operations with Count starting >>>>>>>>");
+            var queryEnumeratorWithCount = movies.Where(m => m.Year > 2000);
+
+            // This case, we are gonna see that Count() iterates through the whole list to get a number.
+            // But late on, when we do the foreach to write each of the elements that meet the condition
+            // We will see that is going to iterate again through the list.
+            // This is because Count() is not Deferred Execution and Where it is.
+            Console.WriteLine(queryEnumeratorWithCount.Count());
+            
+            // To solve that issue, we need to put this into a List and then do the count and the foreach.
+            // This way we prevent to iterate twice.
+            // Count() creates a new List of objects to get us a number of how many items has the list.
+//            var queryEnumeratorWithCount = movies.Where(m => m.Year > 2000).ToList();
+
+            
+            Console.WriteLine("\n<<<<<<< Foreach method starting >>>>>>>>");
+            foreach (var movie in queryEnumeratorWithCount)
+            {
+                Console.WriteLine(movie.Title);
+            }
+            Console.WriteLine("<<<<<<< Foreach method finished >>>>>>>>");
+
+            #endregion
         }
     }
 }
