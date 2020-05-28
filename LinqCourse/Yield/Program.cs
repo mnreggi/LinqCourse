@@ -11,10 +11,10 @@ namespace LinqCourse.Yield
         {
             var movies = new List<Movie>
             {
-                new Movie { Title="The Dark Knight", Year = 2008 },
-                new Movie { Title="The Shinning", Year = 1980 },
-                new Movie { Title ="The Spoilers", Year = 1942 },
-                new Movie { Title = "Inception", Year = 2010 }
+                new Movie { Title="The Dark Knight", Year = 2008, Stars = 5},
+                new Movie { Title="The Shinning", Year = 1980 , Stars = 2},
+                new Movie { Title ="The Spoilers", Year = 1942 , Stars = 1},
+                new Movie { Title = "Inception", Year = 2010 , Stars = 3}
             };
 
             #region Extension Methods
@@ -142,7 +142,7 @@ namespace LinqCourse.Yield
             Console.WriteLine("<<<<<<< While method enumerator finished >>>>>>>>");
             #endregion
             
-            #region Deferred vs NOT Deferred
+            #region Deferred vs Inmidate execution
             
             Console.WriteLine("-------------------------------------\n");
             
@@ -197,17 +197,17 @@ namespace LinqCourse.Yield
             Console.WriteLine("<<<<<<< Foreach method finished >>>>>>>>");
             
             
-            try
-            {
-                Console.WriteLine("<<<<<<< Operations without ToList() inside Try Catch starting >>>>>>>>");
-                queryException = movies.MyFilter(m => m.GiveMeException > 2000);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Do I have this exception? - {e.Message}\n");
-            }
-            
-            Console.WriteLine($"Count of movies: {queryException.Count()}");
+//            try
+//            {
+//                Console.WriteLine("<<<<<<< Operations without ToList() inside Try Catch starting >>>>>>>>");
+//                queryException = movies.MyFilter(m => m.GiveMeException > 2000);
+//            }
+//            catch (Exception e)
+//            {
+//                Console.WriteLine($"Do I have this exception? - {e.Message}\n");
+//            }
+//            
+//            Console.WriteLine($"Count of movies: {queryException.Count()}");
             
             // Please comment above try catch to solve the problem.
             // Uncomment the following to finally solve the issue.
@@ -224,6 +224,28 @@ namespace LinqCourse.Yield
                 Console.WriteLine($"Now I can see when is executing - {e.Message}\n");
             }
             
+            #endregion
+            
+            #region Streaming and Non Streaming. 
+            
+            // Here we are gonna execute the Where extension method from LINQ
+            Console.WriteLine("-------------------------------------\n");
+            
+            // Where is a streaming operator. Only needs to reads through the source data upon till the point where produces a result. (Yield result and continue).
+            // OrderBy is a NON streaming operator. In this case is still offers Deferred execution, but is a Non streaming one.
+            // To order, needs to go through the whole list to check which one needs to be take first.
+
+            Console.WriteLine("<<<<<<< Where starting >>>>>>>>");
+            var queryNoStreaming = movies.Where(m => m.Year > 2000)
+                                         .OrderBy(m => m.Stars);
+
+            Console.WriteLine("\n<<<<<<< Foreach method starting >>>>>>>>");
+            foreach (var movie in queryNoStreaming)
+            {
+                Console.WriteLine(movie.Title);
+            }
+            Console.WriteLine("<<<<<<< Foreach method finished >>>>>>>>");
+
             #endregion
         }
     }

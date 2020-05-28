@@ -5,6 +5,7 @@ namespace Queries
     public class Movie
     {
         public string Title { get; set; }
+        public int Stars { get; set; }
         
         // Changing this so we can see when this property is inspected.
         private int _year;
