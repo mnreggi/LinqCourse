@@ -6,7 +6,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Update="FilterOrderProjection\fuel.csv">
+      <None Update="locations.csv">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="username.csv">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
     </ItemGroup>

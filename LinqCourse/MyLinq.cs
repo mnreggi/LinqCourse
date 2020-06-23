@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace LinqCourse.Yield
+namespace LinqCourse
 {
     public static class MyLinq
     {

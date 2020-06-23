@@ -5,15 +5,26 @@
     <e p="C:\Users\mreggi\.Rider2019.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\mreggi\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_LinqCourse.-924058994.00" t="ExcludeRecursive" />
     <e p="C:\Users\mreggi\RiderProjects\LinqCourse" t="IncludeFlat">
+      <e p="FilterOrderProjection" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="FilterOrderProjection.csproj" t="IncludeRecursive" />
+        <e p="locations.csv" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="FilterOrderProjection.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="User.cs" t="Include" />
+        <e p="username.csv" t="Include" />
+      </e>
       <e p="LinqCourse" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
-        <e p="FilterOrderProjection" t="Include">
-          <e p="locations.csv" t="Include" />
-          <e p="Program.cs" t="Include" />
-          <e p="User.cs" t="Include" />
-          <e p="username.csv" t="Include" />
-        </e>
         <e p="LinqCourse.csproj" t="IncludeRecursive" />
+        <e p="Movie.cs" t="Include" />
+        <e p="MyLinq.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp2.2" t="Include">
@@ -21,11 +32,7 @@
             </e>
           </e>
         </e>
-        <e p="Yield" t="Include">
-          <e p="Movie.cs" t="Include" />
-          <e p="MyLinq.cs" t="Include" />
-          <e p="Program.cs" t="Include" />
-        </e>
+        <e p="Program.cs" t="Include" />
       </e>
       <e p="LinqCourse.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />

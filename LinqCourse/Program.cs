@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Queries;
 
-namespace LinqCourse.Yield
+namespace LinqCourse
 {
     class Program
     {
-        static void Main2(string[] args)
+        static void Main(string[] args)
         {
             var movies = new List<Movie>
             {

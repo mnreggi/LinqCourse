@@ -9,8 +9,8 @@ namespace User
     {
         static void Main(string[] args)
         {
-            var users = ProcessUsers("FilterOrderProjection/username.csv");
-            var locations = processLocations("FilterOrderProjection/locations.csv");
+            var users = ProcessUsers("username.csv");
+            var locations = processLocations("locations.csv");
 
             var queryUsers = from user in users
                 where user.Id >= 5000
