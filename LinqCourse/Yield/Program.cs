@@ -7,7 +7,7 @@ namespace LinqCourse.Yield
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main2(string[] args)
         {
             var movies = new List<Movie>
             {
@@ -245,6 +245,29 @@ namespace LinqCourse.Yield
                 Console.WriteLine(movie.Title);
             }
             Console.WriteLine("<<<<<<< Foreach method finished >>>>>>>>");
+
+            #endregion
+            
+            
+            
+            #region Filtering and finding elements. 
+            
+            Console.WriteLine("-------------------------------------\n");
+            
+            // To order by 2 condition, we can not use two orderBy methods. Because the second one cancel the first order.
+            // We need to specify ThenBy or ThenByDescending.
+            var queryTwoOrderBy = movies.Where(m => m.Year > 2000)
+                .OrderByDescending(m => m.Stars)
+                .ThenBy(m => m.Title);
+            
+            // This query does not offer deferred execution, but try to be as lazy as possible.
+            // As soon as it finds a TRUE, it will exit the query and return a value.
+            var queryAny = movies.Any(m => m.Year == 2010);
+            
+            // This also is not deferred execution, but try to be as lazy as possible.
+            // First match FALSE, will exit the query and return FALSE.
+            var queryAll = movies.All(m => m.Year == 2010);
+
 
             #endregion
         }
